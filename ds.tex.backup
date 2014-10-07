@@ -161,10 +161,9 @@ Srinivasa Ramanujan & Erode \\
 
 \begin{frame}{Distant Supervision}
 \begin{itemize}
-\item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation
-\item[\textcolor{green}{$\bullet$}] Can quickly label huge corpora
-\item[\textcolor{red}{$\bullet$}] Same entity pair can match different relations (Founded(Steve Jobs, Apple) or CEO(Steve Jobs, Apple))
-\item[\textcolor{red}{$\bullet$}] False positives, may lead to model learning wrong patterns for relations
+ \item[\textcolor{green}{$\bullet$}]   Can quickly label huge corpora
+ \item[\textcolor{red}{$\bullet$}] Same entity pair can match different relations (Founded(Steve Jobs, Apple) or CEO(Steve Jobs, Apple))
+\item[\textcolor{red}{$\bullet$}] False positives
 \end{itemize}
 \end{frame}
 
