@@ -13,6 +13,8 @@
 *.glg
 *.gls
 *.ilg
+*.nav
+*.snm
 *.ind
 *.lof
 *.lot
