@@ -2,8 +2,24 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{default}
+\usepackage{soul}
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+
+\newcommand*\MyPitem{%
+  \item[\color{green}\scalebox{0.9}{\textbullet}]}
+\newcommand*\MyCitem{%
+  \item[\color{red}\scalebox{0.9}{\textbullet}]}
 
 \begin{document}
+
+\let\tempone\itemize
+\let\temptwo\enditemize
+\renewenvironment{itemize}{\tempone\addtolength{\itemsep}{0.5\baselineskip}}{\temptwo}
+
 \begin{frame}{Distant supervision for Numerical Relation Extraction}{Knowledge Base}
  \begin{itemize}
   \item Derived from \url{data.worldbank.org}, 4371979 numerical facts about 249 countries, 1281 attributes 
@@ -64,9 +80,40 @@ Population (Total)&SP.POP.TOTL\\
 \begin{frame}{Distant supervision process for numerical relation extraction}
  \begin{itemize}
   \item Extract a country and number from a sentence, go to kb and check if there is a match.
+  \item Can be creative during matching:
+  \begin{itemize}
+   \item Distance based matching
+   \item Time based matching
+  \end{itemize}
  \end{itemize}
-
 \end{frame}
+
+\begin{frame}{False Positives}{Numbers are weak entities}
+\begin{itemize}
+ \item Vanilla numerical relation matching is bound to attract humoungous amounts of false positives;
+ \item Stems from the fact that numbers don't have an identity of their own.
+ \item Consider {\SoulColor\hl{India}} and {\SoulColor\hl{Mumbai}} Vs. {\SoulColor\hl{India}} and {\SoulColor\hl{19}}
+ \item {\SoulColor\hl{Mumbai}} is a strong entity, {\SoulColor\hl{19}} is a \textbf{weak} entity.
+ \end{itemize}
+\end{frame}
+
+
+ \begin{frame}{False Positives}{Numbers are weak entities}
+ \begin{itemize}  
+ \item Compare the number of sentences in which {\SoulColor\hl{India}} and {\SoulColor\hl{Mumbai}} appear together, vs the number of sentences
+  in which {\SoulColor\hl{India}} and {\SoulColor\hl{19}} appear together.
+ \item Just {\SoulColor\hl{19}} can be appear with India in several contexts:
+ \begin{itemize}
+ \item Internet user \%
+ \item Billion dollars invested by a company
+ \item \% of people below the poverty line
+ \item date (if we are not careful), number of medals won by Indian athletes...
+\end{itemize}
+
+ \item Can we expect the situation to be even worse for certain types of numbers?
+\end{itemize}
+\end{frame}
+
 
 
 \end{document}

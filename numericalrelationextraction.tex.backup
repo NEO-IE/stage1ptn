@@ -2,6 +2,17 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{default}
+\usepackage{soul}
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+
+\newcommand*\MyPitem{%
+  \item[\color{green}\scalebox{0.9}{\textbullet}]}
+\newcommand*\MyCitem{%
+  \item[\color{red}\scalebox{0.9}{\textbullet}]}
 
 \begin{document}
 \begin{frame}{Distant supervision for Numerical Relation Extraction}{Knowledge Base}
@@ -50,5 +61,39 @@ Population (Total)&SP.POP.TOTL\\
 \end{center}
 
 \end{frame}
+
+\begin{frame}{Corpus}
+\begin{itemize}
+ \item Subset of the tac corpus
+ \item 268, 036 Documents, X sentences having a country and a number 
+ \item List of countries augmented manually by adding all possible synonyms (Dutch, Netherlands) and inflections (Ireland, Irish)
+\end{itemize}
+
+ 
+\end{frame}
+
+\begin{frame}{Distant supervision process for numerical relation extraction}
+ \begin{itemize}
+  \item Extract a country and number from a sentence, go to kb and check if there is a match.
+  \item Can be creative during matching:
+  \begin{itemize}
+   \item Distance based matching
+   \item Time based matching
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{False Positives}{Numbers are weak entities}
+ \begin{itemize}
+  \item Vanilla numerical relation matching is bound to attract humoungous amounts of false positives;
+  \item Stems from the fact that numbers don't have an identity of their own.
+  \item Consider {\SoulColor\hl{India} and {\SoulColor\hl{Mumbai}} Vs. {\SoulColor\hl{India} and {\SoulColor\hl{19}}
+  \item {\SoulColor\hl{Mumbai}} is a strong entity, {\SoulColor\hl{19}} is a weak entity.
+  \item 
+ \end{itemize}
+
+\end{frame}
+
+
 
 \end{document}
