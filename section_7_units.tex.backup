@@ -86,6 +86,19 @@ cover.
 
 \begin{frame}
  \frametitle{Overview of Unit Extraction System}
+ \begin{itemize}
+  \item Some of the features that grammar uses to assign the best scores to various
+parses are as belows: \pause
+    \begin{itemize}
+        \item Matches with Unit Catalog \pause
+	\item Lexical Clues \pause
+	\item Relative Frequency - Prior of the word to be present as unit, then as an
+	  non-unit word. This is derived from WordNet ontologies. \pause
+	\item Co-occurrence statistics - presence of strongly co-occuring words in the
+	  text can help in disambiguating the various candidate units 
+    \end{itemize}
+ \end{itemize}
+
  
  
 \end{frame}

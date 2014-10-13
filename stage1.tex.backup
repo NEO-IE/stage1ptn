@@ -637,6 +637,7 @@ parses are as belows: \pause
  \end{itemize}
 
 \end{frame}
+
 \begin{frame}{A case for Keywords}
  \begin{exampleblock}{Good News}
   Sentences expressing a numerical relation can be expected to have keywords that denote the relation
@@ -662,6 +663,7 @@ Electricity Production & "Electricity" \\
  \hline
  \end{tabular}
 \end{frame}
+
 \begin{frame}{A case for Keywords}
 \begin{itemize}
   \item Numbers are the second entity in our setup (Relation(Country, Number))
@@ -671,5 +673,12 @@ Electricity Production & "Electricity" \\
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\begin{center}
+ \includegraphics{./imgs/simple.pdf}
+ % simple.eps: 0x0 pixel, 300dpi, 0.00x0.00 cm, bb=0 -1 348 200
+\end{center}
+
+\end{frame}
 
 \end{document}
