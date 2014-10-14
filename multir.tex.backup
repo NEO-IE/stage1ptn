@@ -1,0 +1,29 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+
+\begin{document}
+\begin{frame}{Distant Supervision Techniques}
+ \begin{itemize}
+  \item First paper in 1999, almost every possibility explored
+ \end{itemize}
+\begin{center}
+ \includegraphics[scale=0.12]{./imgs/dsreadings.pdf}
+ % dsreadings.pdf: 2381x1285 pixel, 72dpi, 84.00x45.33 cm, bb=0 0 2381 1285
+\end{center}
+\end{frame}
+
+\begin{frame}{Distant Supervision Techniques}
+ \begin{itemize}
+  \item First paper in 1999, \emph{almost} every possibility explored
+ \end{itemize}
+\begin{center}
+ \includegraphics[scale=0.12]{./imgs/us.pdf}
+ % us.pdf: 2381x1285 pixel, 72dpi, 84.00x45.33 cm, bb=0 0 2381 1285
+\end{center}
+
+\end{frame}
+
+
+\end{document}
