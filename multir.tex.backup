@@ -2,7 +2,8 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{default}
-
+\usepackage{pdfpages}
+\usepackage{biblatex}
 \begin{document}
 \begin{frame}{Distant Supervision Techniques}
  \begin{itemize}
@@ -25,5 +26,13 @@
 
 \end{frame}
 
+\begin{frame}{Relation Extraction Using MultiR}
+\footnote[frame]{Here is a footnote}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode1.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
 
+\end{frame}
 \end{document}
