@@ -17,9 +17,11 @@
 \newcommand*\MyCitem{%
   \item[\color{red}\scalebox{0.9}{\textbullet}]}
 
+
 \begin{document}
 
 
+%PART 1 : Motivation
 \begin{frame}{Motivation}
 
     \begin{figure}
@@ -28,8 +30,6 @@
   \end{figure}
  
 \end{frame}
-
-
 \begin{frame}{Motivation}
  
  \begin{itemize}
@@ -43,7 +43,6 @@
     \end{itemize}
  \end{itemize} 
 \end{frame}
-
 \begin{frame}{Motivation}
 
 \begin{itemize}
@@ -58,16 +57,11 @@
  
 \end{itemize}
 \end{frame}
-
 \begin{frame}{Problem Statement}
- 
  \begin{itemize}
   \item Given that we know a lot about countries, can we train extractors that run over the web and pull similar facts about other entities?
  \end{itemize}
-
- 
 \end{frame}
-
 \begin{frame}{Introduction}
 
 \begin{itemize}
@@ -94,10 +88,8 @@
 \end{itemize}
 
 \end{frame}
-
 \begin{frame}{Relation Extraction: Problem}
- 
- \begin{itemize}
+\begin{itemize}
  \item Extract 3-tuples which consists of an entity and a numerical value that are bound by some relation.
   
     \begin{itemize}
@@ -107,14 +99,13 @@
     \end{itemize}
 
  \end{itemize}
-
 \end{frame}
 
+%PART 2 : Relation extraction as a machine learning problem
 \begin{frame}
 \begin{block}{Relation extraction as a Machine Learning Problem}
 \end{block}
 \end{frame}
-
 \begin{frame}{Machine Learning for Relation Extraction}
  \begin{itemize}
   \item Structure and content of sentences expressing the same relations can be expected to be similar. 
@@ -124,7 +115,6 @@
    \end{itemize}   
  \end{itemize}
 \end{frame}
-
 \begin{frame}{Machine Learning for Relation Extraction}
 \begin{itemize}
 \item  Structure and content of sentences expressing the same relations can be expected to be similar. 
@@ -134,8 +124,6 @@
     \end{itemize}
  \end{itemize}
 \end{frame}
-
-
 \begin{frame}{Machine Learning for Relation Extraction}
  
  \begin{itemize}
@@ -152,7 +140,6 @@
  \end{itemize}
 
 \end{frame}
-
 \begin{frame}{Machine Learning for Relation Extraction}
 \begin{itemize}
   \item There is lot of redundancy in ways in which a relation is expressed in sentence. \pause
@@ -165,9 +152,7 @@
     \item This forms the relation extraction as a multi-class classification problem.
  \end{itemize}
 \end{frame}
-
-
-\begin{frame}{Relation Extraction Problem}
+\begin{frame}{Possible Workflow}
   \begin{itemize}
    \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.
    \item Extract features (important keywords, grammatical structure, parse tress, etc.) for these sentences.
@@ -180,7 +165,6 @@
      \end{itemize}
   \end{itemize}
 \end{frame}
-
 \begin{frame}{Challenge}
  \begin{itemize}
   \item The size of corpus is enormous (e.g, 5 million sentences).  \pause
@@ -190,7 +174,7 @@
  \end{itemize}
 \end{frame}
 
-%PART 2 DS
+%PART 3 DS
 \begin{frame}{Distant Supervision}
 \begin{itemize}
  \item Manual labeling of the entire corpus is not possible
@@ -200,7 +184,6 @@
   
 \end{itemize}
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -224,7 +207,6 @@ Alan Turing & London \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -251,7 +233,6 @@ Alan Turing & London \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -278,7 +259,6 @@ Alan Turing & London \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -305,7 +285,6 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -332,7 +311,6 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}
 \begin{itemize}
 \item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation
@@ -341,6 +319,132 @@ Srinivasa Ramanujan & Erode \\
 \item[\textcolor{red}{$\bullet$}] False positives, may lead to model learning wrong patterns for relations
 \end{itemize}
 \end{frame}
+
+%PART 4: MultiR
+\begin{frame}{Distant Supervision Techniques}
+ \begin{itemize}
+  \item First paper in 1999, almost every possibility explored
+ \end{itemize}
+\begin{center}
+ \includegraphics[scale=0.12]{./imgs/dsreadings.pdf}
+ % dsreadings.pdf: 2381x1285 pixel, 72dpi, 84.00x45.33 cm, bb=0 0 2381 1285
+\end{center}
+\end{frame}
+\begin{frame}{Distant Supervision Techniques}
+ \begin{itemize}
+  \item First paper in 1999, \emph{almost} every possibility explored
+ \end{itemize}
+\begin{center}
+ \includegraphics[scale=0.12]{./imgs/us.pdf}
+ % us.pdf: 2381x1285 pixel, 72dpi, 84.00x45.33 cm, bb=0 0 2381 1285
+\end{center}
+
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode1.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode2.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode3.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode4.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode5.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode6.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode7.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+\begin{frame}{Relation Extraction Using MultiR}{From \url{raphaelhoffmann.com/publications}}
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.40]{./imgs/multirmode8.pdf}
+ % multirmode.1.pdf: 720x540 pixel, 72dpi, 25.40x19.05 cm, bb=0 0 720 540
+ \end{figure}
+\end{frame}
+
+% %PART 5: TAC Submission
+
+\begin{frame}{Cold Start Knowledge Base Population at 2014}
+\begin{itemize}
+ 
+ \item Knowledge Base Population (KBP) track of TAC encourages the development of systems that can match entities mentioned in natural texts with those
+appearing in a knowledge base and extract novel information about entities from a document collection and add it to a new or existing knowledge base. \pause
+ 
+ \item Some example relations:
+    \begin{itemize}
+      \item children of
+      \item city of birth
+      \item shareholders
+      \item countries of residence
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+\begin{frame}
+
+\begin{itemize}
+  \item  Modeled the problem using distant supervision
+  \item Used Freebase as an existing Knowledge base.
+    
+    \item \textbf{Freebase: }Freebase is a large collaborative knowledge base consisting of metadata composed mainly by its community members. 
+    \item It is an online collection of structured data harvested from many sources, including individual, user-submitted wiki contributions.
+ \end{itemize}
+
+ 
+\end{frame}
+\begin{frame}{Corpus}
+ \begin{itemize}
+  \item The TAC corpus consisted of three type of documents: \pause
+    \begin{itemize}
+	\item \textbf{discussion forums } 99,063 English discussion forum documents selected from the BOLT Phase 1 discussion forums source data releases. Each forum includes at least 5 posts. \pause
+
+	\item \textbf{newswire } 1,000,257 documents selected from English Gigaword Fifth Edition. \pause
+
+	 \item \textbf{web} 999,999 English web documents selected from various GALE web collections. \pause
+    \end{itemize}
+    
+      \item We have submitted the knowledge base populated using our techniques on the above corpus and waiting for results.
+ \end{itemize}
+
+
+ 
+\end{frame}
+
 
 
 %%THIS IS PART 6 : numerical relation extraction using distant supervision
@@ -465,8 +569,7 @@ Population (Total)&SP.POP.TOTL\\
   \end{itemize}
   \end{itemize}
   \end{frame}
-\begin{frame}
-  \frametitle{Numbers are in
+
 \begin{frame}
  
  \frametitle{Numbers are incomplete without units} \pause
@@ -490,7 +593,7 @@ Population (Total)&SP.POP.TOTL\\
   \end{itemize}
   \end{frame}
   
-  \begin{frame}
+\begin{frame}
   \frametitle{Numbers are incomplete without units} 
     \begin{figure}
     \centering
@@ -559,11 +662,7 @@ parses are as belows: \pause
     \end{itemize}
  \end{itemize}
 
- 
- 
-\end{frame}
 
-complete without units} 
     \begin{figure}
     \centering
     \includegraphics[width = 1.0\textwidth]{images/ex_6}
@@ -684,3 +783,4 @@ Electricity Production & "Electricity" \\
 
 
 \end{document}
+

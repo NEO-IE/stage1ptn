@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{default}
 \usepackage{default}
+
 \usepackage{soul}
 \makeatletter
 \newcommand\SoulColor{%
@@ -16,9 +17,50 @@
 \newcommand*\MyCitem{%
   \item[\color{red}\scalebox{0.9}{\textbullet}]}
 
+
 \begin{document}
 
+%PART 1 : Motivation
+\begin{frame}{Motivation}
 
+    \begin{figure}
+    \centering
+    \includegraphics[width = 0.5\textwidth]{images/motivation}
+  \end{figure}
+ 
+\end{frame}
+\begin{frame}{Motivation}
+ 
+ \begin{itemize}
+  \item Repositories of facts containing this information can be found at many places, like data.worldbank.org, Wikipedia infoboxes etc. \pause
+  \item Countries are popular and finite, finding complete knowledge bases is possible. \pause
+  \item What about less popular entities?  \pause
+    \begin{itemize}
+      \item What is the population of Arbit Apartments, Powai? \pause
+      \item What is the GDP of Sugarcane Industry of India? \pause
+      \item Percent of Internet users in Mumbai? 
+    \end{itemize}
+ \end{itemize} 
+\end{frame}
+\begin{frame}{Motivation}
+
+\begin{itemize}
+ \item  Good News!!! \pause
+ \item  Web is huge, probably, there is some page which contains the information we are looking for. \pause
+ \item The way in which you express a fact about an entity depends on the fact, and not the entity. \pause
+ \item We may expect the sentence structure to be similar. \pause
+ \begin{itemize}
+    \item Population of India reached 1.3 billion, making it the second largest country in the world
+    \item Population of Arbit Apartments, Powai reached 1300
+ \end{itemize}
+ 
+\end{itemize}
+\end{frame}
+\begin{frame}{Problem Statement}
+ \begin{itemize}
+  \item Given that we know a lot about countries, can we train extractors that run over the web and pull similar facts about other entities?
+ \end{itemize}
+\end{frame}
 \begin{frame}{Introduction}
 
 \begin{itemize}
@@ -45,10 +87,8 @@
 \end{itemize}
 
 \end{frame}
-
 \begin{frame}{Relation Extraction: Problem}
- 
- \begin{itemize}
+\begin{itemize}
  \item Extract 3-tuples which consists of an entity and a numerical value that are bound by some relation.
   
     \begin{itemize}
@@ -58,35 +98,31 @@
     \end{itemize}
 
  \end{itemize}
-
 \end{frame}
 
+%PART 2 : Relation extraction as a machine learning problem
 \begin{frame}
 \begin{block}{Relation extraction as a Machine Learning Problem}
 \end{block}
 \end{frame}
-
-\begin{frame}{Machine Learning for Relation Extraction
+\begin{frame}{Machine Learning for Relation Extraction}
  \begin{itemize}
-  \item Structure and content of sentences expressing the same relations are expected to be similar.
-   \begin{itemize}
+  \item Structure and content of sentences expressing the same relations can be expected to be similar. 
+ \begin{itemize}
       \item The population of Australia is estimated to be 23,622,400 as of 7 October 2014.
       \item According to an official estimate for 1 June 2014, the population of Russia is 143,800,000.   
    \end{itemize}   
  \end{itemize}
 \end{frame}
-
 \begin{frame}{Machine Learning for Relation Extraction}
 \begin{itemize}
-\item  Structure and content of sentences expressing the same relations are expected to be similar. 
- \item \begin{itemize}   
+\item  Structure and content of sentences expressing the same relations can be expected to be similar. 
+ \begin{itemize}   
     \item At 17,075,400 square kilometres, Russia is the largest country in the world.
     \item With an area of 504,030 $km^{2}$, Spain is the second largest country in Western Europe.
     \end{itemize}
  \end{itemize}
 \end{frame}
-
-
 \begin{frame}{Machine Learning for Relation Extraction}
  
  \begin{itemize}
@@ -103,7 +139,6 @@
  \end{itemize}
 
 \end{frame}
-
 \begin{frame}{Machine Learning for Relation Extraction}
 \begin{itemize}
   \item There is lot of redundancy in ways in which a relation is expressed in sentence. \pause
@@ -116,9 +151,7 @@
     \item This forms the relation extraction as a multi-class classification problem.
  \end{itemize}
 \end{frame}
-
-
-\begin{frame}{Relation Extraction Problem}
+\begin{frame}{Possible Workflow}
   \begin{itemize}
    \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.
    \item Extract features (important keywords, grammatical structure, parse tress, etc.) for these sentences.
@@ -131,7 +164,6 @@
      \end{itemize}
   \end{itemize}
 \end{frame}
-
 \begin{frame}{Challenge}
  \begin{itemize}
   \item The size of corpus is enormous (e.g, 5 million sentences).  \pause
@@ -141,7 +173,7 @@
  \end{itemize}
 \end{frame}
 
-%PART 2 DS
+%PART 3 DS
 \begin{frame}{Distant Supervision}
 \begin{itemize}
  \item Manual labeling of the entire corpus is not possible
@@ -151,7 +183,6 @@
   
 \end{itemize}
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -175,7 +206,6 @@ Alan Turing & London \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -202,7 +232,6 @@ Alan Turing & London \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -229,7 +258,6 @@ Alan Turing & London \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -256,7 +284,6 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -283,7 +310,6 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
  
 \end{frame}
-
 \begin{frame}{Distant Supervision}
 \begin{itemize}
 \item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation
@@ -293,6 +319,7 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
 \end{frame}
 
+%PART 4 : MultiR
 
 %%THIS IS PART 6 : numerical relation extraction using distant supervision
 
