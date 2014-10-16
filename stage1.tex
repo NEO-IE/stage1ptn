@@ -41,12 +41,12 @@
 \begin{frame}{Motivation}
  
  \begin{itemize}
-  \item Repositories of facts containing this information can be found at many places, like data.worldbank.org, Wikipedia infoboxes etc. \pause
-  \item Countries are popular and finite, finding complete knowledge bases is possible. \pause
-  \item What about less popular entities?  \pause
+  \item Repositories of facts containing this information can be found at many places, like data.worldbank.org, Wikipedia infoboxes etc. \pause \\~\\
+  \item Countries are popular and finite, finding complete knowledge bases is possible. \pause \\~\\
+  \item What about less popular entities?  \pause 
     \begin{itemize}
-      \item What is the population of Arbit Apartments, Powai? \pause
-      \item What is the GDP of Sugarcane Industry of India? \pause
+      \item What is the population of Arbit Apartments, Powai? \pause \\~\\
+      \item What is the GDP of Sugarcane Industry of India? \pause \\~\\
       \item Percent of Internet users in Mumbai? 
     \end{itemize}
  \end{itemize} 
@@ -54,13 +54,13 @@
 \begin{frame}{Motivation}
 
 \begin{itemize}
- \item  Good News!!! \pause
- \item  Web is huge, probably, there is some page which contains the information we are looking for. \pause
- \item The way in which you express a fact about an entity depends on the fact, and not the entity. \pause
+ \item  Good News!!! \pause \\~\\
+ \item  Web is huge, probably, there is some page which contains the information we are looking for. \pause \\~\\
+ \item The way in which you express a fact about an entity depends on the fact, and not the entity. \pause \\~\\
  \item We may expect the sentence structure to be similar. \pause
  \begin{itemize}
-    \item Population of India reached 1.3 billion, making it the second largest country in the world
-    \item Population of Arbit Apartments, Powai reached 1300
+    \item Population of India reached 1.3 billion, making it the second largest country in the world. \pause \\~\\
+    \item Population of Arbit Apartments, Powai reached 1300.
  \end{itemize}
  
 \end{itemize}
@@ -100,11 +100,11 @@
 \end{frame}
 \begin{frame}{Relation Extraction: Problem}
 \begin{itemize}
- \item Extract 3-tuples which consists of an entity and a numerical value that are bound by some relation.
-  
+ \item Extract 3-tuples which consists of an entity and a numerical value that are bound by some relation. \\~\\
+   
     \begin{itemize}
-	\item  (India, \textbf{economy}, 1.842 trillion USD)
-	\item  (China, \textbf{internet users},  590.56 million)
+	\item  (India, \textbf{economy}, 1.842 trillion USD) \\~\\
+	\item  (China, \textbf{internet users},  590.56 million) \\~\\
 	\item  (USA, \textbf{land area}, 2,959,054 square mile)
     \end{itemize}
 
@@ -113,33 +113,33 @@
 
 %PART 2 : Relation extraction as a machine learning problem
 
-\section{Relation Extractions as a Machine Learning Problem}
+\section{Relation Extraction as a Machine Learning Problem}
 \begin{frame}
 \begin{block}{Relation extraction as a Machine Learning Problem}
 \end{block}
 \end{frame}
-\begin{frame}{Machine Learning for Relation Extraction}
+\begin{frame}{Relation Extraction as a Machine Learning Problem}
  \begin{itemize}
-  \item Structure and content of sentences expressing the same relations can be expected to be similar. 
+  \item Structure and content of sentences expressing the same relations can be expected to be similar.  \\~\\
  \begin{itemize}
-      \item The population of Australia is estimated to be 23,622,400 as of 7 October 2014.
+      \item The population of Australia is estimated to be 23,622,400 as of 7 October 2014. \\~\\
       \item According to an official estimate for 1 June 2014, the population of Russia is 143,800,000.   
    \end{itemize}   
  \end{itemize}
 \end{frame}
-\begin{frame}{Machine Learning for Relation Extraction}
+\begin{frame}{Relation Extraction as a Machine Learning Problem}
 \begin{itemize}
-\item  Structure and content of sentences expressing the same relations can be expected to be similar. 
+\item  Structure and content of sentences expressing the same relations can be expected to be similar.  \\~\\
  \begin{itemize}   
-    \item At 17,075,400 square kilometres, Russia is the largest country in the world.
-    \item With an area of 504,030 $km^{2}$, Spain is the second largest country in Western Europe.
+    \item At 17,075,400 square kilometres, Russia is the largest country in the world. \\~\\
+    \item With an area of 504,030 $km^{2}$, Spain is the second largest country in Western Europe. 
     \end{itemize}
  \end{itemize}
 \end{frame}
-\begin{frame}{Machine Learning for Relation Extraction}
+\begin{frame}{Relation Extraction as a Machine Learning Problem}
  
  \begin{itemize}
-  \item Redundancy in grammatical features and dependencies of the sentences expressing same relation. \pause
+  \item Redundancy in grammatical features and dependencies of the sentences expressing same relation. \pause 
      \begin{figure}
     \centering
     \includegraphics[width = 0.8\textwidth]{images/ex_4}
@@ -152,51 +152,53 @@
  \end{itemize}
 
 \end{frame}
-\begin{frame}{Machine Learning for Relation Extraction}
+\begin{frame}{Relation Extraction as a Machine Learning Problem}
 \begin{itemize}
-  \item There is lot of redundancy in ways in which a relation is expressed in sentence. \pause
-  \item So for every relation learn the patterns that express it. \pause
+  \item There is lot of redundancy in ways in which a relation is expressed in sentence. \pause \\~\\
+  \item So for every relation learn the patterns that express it. \pause \\~\\
     \begin{itemize}
-      \item grammatical patterns - POS tags, dependency parse. \pause
-      \item keywords for the relations. \pause
+      \item grammatical patterns - POS tags, dependency parse. \pause \\~\\
+      \item keywords for the relations. \pause \\~\\
     \end{itemize}
     
     \item This forms the relation extraction as a multi-class classification problem.
  \end{itemize}
 \end{frame}
-\begin{frame}{Possible Workflow}
+\begin{frame}{Possible Workflow} \pause
   \begin{itemize}
-   \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.
-   \item Extract features (important keywords, grammatical structure, parse tress, etc.) for these sentences.
-   \item Learn a multi-class classifier on this training data (Explained later).
-   \item Once the model is learnt, for every sentence 
+   \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.\pause  \\~\\
+   \item Extract features (important keywords, grammatical structure, parse tress, etc.) for these sentences. \pause \\~\\
+   \item Learn a multi-class classifier on this training data (Explained later). \pause \\~\\
+   \item Once the model is learnt, for every sentence \pause \\~\\
     \begin{itemize}
-	\item Extract features for the sentence
-	\item Predict the relation using the model for these features
-	\item store the fact into database.
+	\item Extract features for the sentence \pause \\~\\
+	\item Predict the relation using the model for these features \pause \\~\\
+	\item store the fact into database. 
      \end{itemize}
   \end{itemize}
 \end{frame}
+
 \begin{frame}{Challenge}
  \begin{itemize}
-  \item The size of corpus is enormous (e.g, 5 million sentences).  \pause
-  \item It is very hard to go through the entire corpus and label each sentence to one of the relations. \pause
-  \item For model to generalize well, we need lot of training data. \pause
+  \item The size of corpus is enormous (e.g, 5 million sentences).  \pause \\~\\
+  \item It is very hard to go through the entire corpus and label each sentence to one of the relations. \pause \\~\\
+  \item For model to generalize well, we need lot of training data. \pause \\~\\
   \item What to do then?
  \end{itemize}
 \end{frame}
 
 \section{Distant Supervision}
 %PART 3 DS
-\begin{frame}{Distant Supervision}
+\begin{frame}{Distant Supervision} \pause 
 \begin{itemize}
- \item Manual labeling of the entire corpus is not possible
- \item Weak Supervision as a middle ground
-  \item Use Heuristics to align a table of facts with the corpus
+ \item Manual labeling of the entire corpus is not possible \pause \\~\\
+ \item Weak Supervision as a middle ground \pause \\~\\
+  \item Use Heuristics to align a table of facts with the corpus  \pause \\~\\
   \item Fuzzy training 
   
 \end{itemize}
 \end{frame}
+
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -324,12 +326,12 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
  
 \end{frame}
-\begin{frame}{Distant Supervision}
+\begin{frame}{Distant Supervision} \pause
 \begin{itemize}
-\item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation
-\item[\textcolor{green}{$\bullet$}] Can quickly label huge corpora
-\item[\textcolor{red}{$\bullet$}] Same entity pair can match different relations (Founded(Steve Jobs, Apple) or CEO(Steve Jobs, Apple))
-\item[\textcolor{red}{$\bullet$}] False positives, may lead to model learning wrong patterns for relations
+\item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation \pause \\~\\
+\item[\textcolor{green}{$\bullet$}] Can quickly label huge corpora \pause \\~\\
+\item[\textcolor{red}{$\bullet$}] Same entity pair can match different relations (Founded(Steve Jobs, Apple) or CEO(Steve Jobs, Apple)) \pause \\~\\
+\item[\textcolor{red}{$\bullet$}] False positives, may lead to model learning wrong patterns for relations 
 \end{itemize}
 \end{frame}
 
@@ -417,13 +419,13 @@ Srinivasa Ramanujan & Erode \\
 \begin{itemize}
  
  \item Knowledge Base Population (KBP) track of TAC encourages the development of systems that can match entities mentioned in natural texts with those
-appearing in a knowledge base and extract novel information about entities from a document collection and add it to a new or existing knowledge base. \pause
+appearing in a knowledge base and extract novel information about entities from a document collection and add it to a new or existing knowledge base. \pause \\~\\
  
- \item Some example relations:
+ \item Some example relations: 
     \begin{itemize}
-      \item children of
-      \item city of birth
-      \item shareholders
+      \item children of \\~\\
+      \item city of birth \\~\\ 
+      \item shareholders \\~\\
       \item countries of residence
     \end{itemize}
 \end{itemize}
@@ -432,10 +434,10 @@ appearing in a knowledge base and extract novel information about entities from 
 \begin{frame}{Cold Start Knowledge Base Population}
 
 \begin{itemize}
-  \item  Modeled the problem using distant supervision
-  \item Used Freebase as an existing Knowledge base.
+  \item  Modeled the problem using distant supervision. \\~\\
+  \item Used Freebase as an existing Knowledge base. \\~\\
     
-    \item \textbf{Freebase: }Freebase is a large collaborative knowledge base consisting of metadata composed mainly by its community members. 
+    \item \textbf{Freebase: }Freebase is a large collaborative knowledge base consisting of metadata composed mainly by its community members. \\~\\ 
     \item It is an online collection of structured data harvested from many sources, including individual, user-submitted wiki contributions.
  \end{itemize}
 
@@ -443,13 +445,13 @@ appearing in a knowledge base and extract novel information about entities from 
 \end{frame}
 \begin{frame}{Corpus}
  \begin{itemize}
-  \item The TAC corpus consisted of three type of documents: \pause
+  \item The TAC corpus consisted of three type of documents: \pause \\~\\
     \begin{itemize}
-	\item \textbf{discussion forums } 99,063 English discussion forum documents selected from the BOLT Phase 1 discussion forums source data releases. Each forum includes at least 5 posts. \pause
+	\item \textbf{discussion forums } 99,063 English discussion forum documents selected from the BOLT Phase 1 discussion forums source data releases. Each forum includes at least 5 posts. \pause \\~\\
 
-	\item \textbf{newswire } 1,000,257 documents selected from English Gigaword Fifth Edition. \pause
+	\item \textbf{newswire } 1,000,257 documents selected from English Gigaword Fifth Edition. \pause \\~\\
 
-	 \item \textbf{web} 999,999 English web documents selected from various GALE web collections. \pause
+	 \item \textbf{web} 999,999 English web documents selected from various GALE web collections. \pause \\~\\
     \end{itemize}
     
       \item We have submitted the knowledge base populated using our techniques on the above corpus and waiting for results.
@@ -512,8 +514,8 @@ Population (Total)&SP.POP.TOTL\\
 \end{frame}
 \begin{frame}{Corpus}
 \begin{itemize}
- \item Subset of the tac corpus
- \item 268, 036 Documents, X sentences having a country and a number 
+ \item Subset of the tac corpus \\~\\
+ \item 268, 036 Documents, X sentences having a country and a number  \\~\\
  \item List of countries augmented manually by adding all possible synonyms (Dutch, Netherlands) and inflections (Ireland, Irish)
 \end{itemize}
 
@@ -521,38 +523,39 @@ Population (Total)&SP.POP.TOTL\\
 \end{frame}
 \begin{frame}{Distant supervision process for numerical relation extraction}
  \begin{itemize}
-  \item Extract a country and number from a sentence, go to kb and check if there is a match.
-  \item Can be creative during matching:
-  \begin{itemize}
-   \item Distance based matching
-   \item Time based matching
+  \item Extract a country and number from a sentence, go to kb and check if there is a match. \\~\\
+  \item Can be creative during matching: \\~\\
+  \begin{itemize} 
+   \item Distance based matching \\~\\
+   \item Time based matching 
   \end{itemize}
  \end{itemize}
 \end{frame}
 \begin{frame}{False Positives}{Numbers are weak entities}
 \begin{itemize}
- \item Vanilla numerical relation matching is bound to attract humoungous amounts of false positives;
- \item Stems from the fact that numbers don't have an identity of their own.
- \item Consider {\SoulColor\hl{India}} and {\SoulColor\hl{Mumbai}} Vs. {\SoulColor\hl{India}} and {\SoulColor\hl{19}}
- \item {\SoulColor\hl{Mumbai}} is a strong entity, {\SoulColor\hl{19}} is a \textbf{weak} entity.
+ \item Vanilla numerical relation matching is bound to attract humoungous amounts of false positives; \pause \\~\\
+ \item Stems from the fact that numbers don't have an identity of their own. \pause \\~\\
+ \item Consider {\SoulColor\hl{India}} and {\SoulColor\hl{Mumbai}} Vs. {\SoulColor\hl{India}} and {\SoulColor\hl{19}} \pause \\~\\
+ \item {\SoulColor\hl{Mumbai}} is a strong entity, {\SoulColor\hl{19}} is a \textbf{weak} entity. 
  \end{itemize}
 \end{frame}
 \begin{frame}{False Positives}{Numbers are weak entities}
  \begin{itemize}  
  \item Compare the number of sentences in which {\SoulColor\hl{India}} and {\SoulColor\hl{Mumbai}} appear together, vs the number of sentences
-  in which {\SoulColor\hl{India}} and {\SoulColor\hl{19}} appear together.
- \item Just {\SoulColor\hl{19}} can be appear with India in several contexts:
- \begin{itemize}
- \item Internet user \%
- \item Billion dollars invested by a company
- \item \% of people below the poverty line
- \item date (if we are not careful)
- \item number of medals won by Indian athletes...
-\end{itemize}
+  in which {\SoulColor\hl{India}} and {\SoulColor\hl{19}} appear together. \pause \\~\\
+ \item Just {\SoulColor\hl{19}} can be appear with India in several contexts: \pause \\~\\
+ \begin{itemize} 
+ \item Internet user \% \pause 
+ \item Billion dollars invested by a company \pause 
+ \item \% of people below the poverty line \pause 
+ \item date (if we are not careful) \pause 
+ \item number of medals won by Indian athletes... \pause \\~\\
+\end{itemize} 
 
  \item Can we expect the situation to be even worse for certain types of numbers?
 \end{itemize}
 \end{frame}
+
 \begin{frame}{One Thousand Words}
  \begin{center}
  \includegraphics{./imgs/simple.pdf}
@@ -576,10 +579,10 @@ Population (Total)&SP.POP.TOTL\\
     \includegraphics[width = 1.0\textwidth]{images/ex_6}
   \end{figure}
   \pause 
-  \item Units help in improving recall.  \pause
+  \item Units help in improving recall.  \pause \\~\\ 
   
   \begin{itemize}
-      \item In above example 1.842 as number alone would not match with the fact regarding economy in knowledge base. \pause
+      \item In above example 1.842 as number alone would not match with the fact regarding economy in knowledge base. \pause \\~\\
       \item But with the unit trillion USD, we can normalize the value and then it would match exisiting facts in knowledge base. 
       
   \end{itemize}
@@ -592,18 +595,18 @@ Population (Total)&SP.POP.TOTL\\
  
  \begin{itemize}
   
-  \item  Apart from being a constant quantity, a number usually makes sense when presented along with units. \pause
+  \item  Apart from being a constant quantity, a number usually makes sense when presented along with units. \pause \\~\\
   
     \begin{figure}
     \centering
     \includegraphics[width = 1.0\textwidth]{images/ex_6}
   \end{figure}
   \pause 
-  \item Units help in improving recall.  \pause
+  \item Units help in improving recall.  \pause \\~\\
   
   \begin{itemize}
-      \item In above example 1.842 as number alone would not match with the fact regarding economy in knowledge base. \pause
-      \item But with the unit trillion USD, we can normalize the value and then it would match exisiting facts in knowledge base. 
+      \item In above example 1.842 as number alone would not match with the fact regarding economy in knowledge base. \pause \\~\\
+      \item But with the unit trillion USD, we can normalize the value and then it would match exisiting facts in knowledge base.  \\~\\
       
   \end{itemize}
   \end{itemize}
@@ -617,9 +620,9 @@ Population (Total)&SP.POP.TOTL\\
   \end{figure}
   
   \begin{itemize}
-  \item Units help in reducing false positives and hence improving precision. \pause
+  \item Units help in reducing false positives and hence improving precision. \pause \\~\\
   \begin{itemize}
-      \item If there is a fact, e.g, \textbf{inflation(India, 1.842\%)} in knowledge base, then ignoring units can cause an incorrect match which leads in learning towards noisy patterns.
+      \item If there is a fact, e.g, \textbf{inflation(India, 1.842\%)} in knowledge base, then ignoring units can cause an incorrect match which leads in learning towards noisy patterns. \\~\\
   \end{itemize}
   
  \end{itemize}
@@ -631,17 +634,17 @@ Population (Total)&SP.POP.TOTL\\
  \frametitle{Unit Extraction is not easy!} \pause
  
  \begin{itemize}
-    \item Different ways to represent a single unit. \pause
+    \item Different ways to represent a single unit. \pause \\~\\
     
     \begin{itemize}
-     \item Tunisia occupies an area of 163,610 \textbf{square kilometres}, of which 8,250 are water. \pause
-     \item With an area of about 9.6 \textbf{million $km^{2}$}, the People's Republic of China is the 3rd largest country in total area behind Russia and Canada, and very similar to the United States.
+     \item Tunisia occupies an area of 163,610 \textbf{square kilometres}, of which 8,250 are water. \pause \\~\\
+     \item With an area of about 9.6 \textbf{million $km^{2}$}, the People's Republic of China is the 3rd largest country in total area behind Russia and Canada, and very similar to the United States. \\~\\
     \end{itemize}
 \pause
     
-    \item Multiple units to represent a single numerical fact. \pause
+    \item Multiple units to represent a single numerical fact. \pause \\~\\
     \begin{itemize}
-      \item Vatican City, a walled enclave within the city of Rome, with an area of approximately \textbf{44 hectares} \textbf{(110 acres)}, and a population of 842, is the smallest internationally recognized independent state in the world by both area and population.
+      \item Vatican City, a walled enclave within the city of Rome, with an area of approximately \textbf{44 hectares} \textbf{(110 acres)}, and a population of 842, is the smallest internationally recognized independent state in the world by both area and population. \\~\\
     \end{itemize}
  \end{itemize}
 \end{frame}
@@ -653,7 +656,7 @@ Population (Total)&SP.POP.TOTL\\
  \begin{itemize}
   
   \item A discriminative context free grammmar with scores
-attached to each possible production in the grammar. \pause
+attached to each possible production in the grammar. \pause \\~\\ 
   \item A production P in the grammar is of the form  $ R ::= R_{1} R_{2}$ , scored as 
 \begin{equation*}
 	score(P) = \textbf{w . f}(P, x, i, j, k), 
@@ -666,84 +669,35 @@ cover.
 \begin{frame}
  \frametitle{Overview of Unit Extraction System}
  \begin{itemize}
-  \item Some of the features that grammar uses to assign the best scores to various
-parses are as belows: \pause
+  \item Some of the features that grammar uses to assign the best scores to various 
+parses are as belows: \pause \\~\\
     \begin{itemize}
-        \item Matches with Unit Catalog \pause
-	\item Lexical Clues \pause
+        \item Matches with Unit Catalog \pause \\~\\
+	\item Lexical Clues \pause \\~\\
 	\item Relative Frequency - Prior of the word to be present as unit, then as an
-	  non-unit word. This is derived from WordNet ontologies. \pause
+	  non-unit word. This is derived from WordNet ontologies. \pause \\~\\
 	\item Co-occurrence statistics - presence of strongly co-occuring words in the
 	  text can help in disambiguating the various candidate units 
     \end{itemize}
  \end{itemize}
-
-
-    \begin{figure}
-    \centering
-    \includegraphics[width = 1.0\textwidth]{images/ex_6}
-  \end{figure}
-  
-  \begin{itemize}
-  \item Units help in reducing false positives and hence improving precision. \pause
-  \begin{itemize}
-      \item If there is a fact, e.g, \textbf{inflation(India, 1.842\%)} in knowledge base, then ignoring units can cause an incorrect match which leads in learning towards noisy patterns.
-  \end{itemize}
-  
- \end{itemize}
-
  
 \end{frame}
 \begin{frame}
  \frametitle{Unit Extraction is not easy!} \pause
  
  \begin{itemize}
-    \item Different ways to represent a single unit. \pause
+    \item Different ways to represent a single unit. \pause \\~\\
     
     \begin{itemize}
-     \item Tunisia occupies an area of 163,610 \textbf{square kilometres}, of which 8,250 are water. \pause
-     \item With an area of about 9.6 \textbf{million $km^{2}$}, the People's Republic of China is the 3rd largest country in total area behind Russia and Canada, and very similar to the United States.
-    \end{itemize}
+     \item Tunisia occupies an area of 163,610 \textbf{square kilometres}, of which 8,250 are water. \pause \\~\\
+     \item With an area of about 9.6 \textbf{million $km^{2}$}, the People's Republic of China is the 3rd largest country in total area behind Russia and Canada, and very similar to the United States. \\~\\    \end{itemize}
 \pause
     
-    \item Multiple units to represent a single numerical fact. \pause
+    \item Multiple units to represent a single numerical fact. \pause \\~\\
     \begin{itemize}
-      \item Vatican City, a walled enclave within the city of Rome, with an area of approximately \textbf{44 hectares} \textbf{(110 acres)}, and a population of 842, is the smallest internationally recognized independent state in the world by both area and population.
+      \item Vatican City, a walled enclave within the city of Rome, with an area of approximately \textbf{44 hectares} \textbf{(110 acres)}, and a population of 842, is the smallest internationally recognized independent state in the world by both area and population. \\~\\
     \end{itemize}
  \end{itemize}
-\end{frame}
-\begin{frame}
- \frametitle{Overview of Unit Extraction System} \pause
- 
- \begin{itemize}
-  
-  \item A discriminative context free grammmar with scores
-attached to each possible production in the grammar. \pause
-  \item A production P in the grammar is of the form  $ R ::= R_{1} R_{2}$ , scored as 
-\begin{equation*}
-	score(P) = \textbf{w . f}(P, x, i, j, k), 
-\end{equation*}
-where $(i,j)$ and $(j+1,k)$ are text spans in $x$ that $R_{1}$ and $R_{2}$
-cover.
- \end{itemize}
-\end{frame}
-\begin{frame}
- \frametitle{Overview of Unit Extraction System}
- \begin{itemize}
-  \item Some of the features that grammar uses to assign the best scores to various
-parses are as belows: \pause
-    \begin{itemize}
-        \item Matches with Unit Catalog \pause
-	\item Lexical Clues \pause
-	\item Relative Frequency - Prior of the word to be present as unit, then as an
-	  non-unit word. This is derived from WordNet ontologies. \pause
-	\item Co-occurrence statistics - presence of strongly co-occuring words in the
-	  text can help in disambiguating the various candidate units 
-    \end{itemize}
- \end{itemize}
-
- 
- 
 \end{frame}
 
 %PART 8 : Keywords
@@ -789,10 +743,10 @@ Electricity Production & "Electricity" \\
  \end{tabular}
 \end{frame}
 \begin{frame}{A case for Keywords}
-\begin{itemize}
-  \item Numbers are the second entity in our setup (Relation(Country, Number))
-  \item Unlike real world entities, numbers don't have an identity of their own, sentences should have words (keywords!) indicating what the number stands for
-  \item Manual inspection of 400 sentences pruned out after applying keyword based filter backs this conjecture, not even one false negative
+\begin{itemize} 
+  \item Numbers are the second entity in our setup (Relation(Country, Number)) \\~\\
+  \item Unlike real world entities, numbers don't have an identity of their own, sentences should have words (keywords!) indicating what the number stands for \\~\\
+  \item Manual inspection of 400 sentences pruned out after applying keyword based filter backs this conjecture, not even one false negative \\~\\
   \item The keywords are created manually, can this process be automated?
 \end{itemize}
 \end{frame}
