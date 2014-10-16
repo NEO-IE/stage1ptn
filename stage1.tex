@@ -17,9 +17,17 @@
 \newcommand*\MyCitem{%
   \item[\color{red}\scalebox{0.9}{\textbullet}]}
 
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{Outline}
+\tableofcontents[currentsection]
+\end{frame}
+}
 
 \begin{document}
 
+\section{Motivation}
 
 %PART 1 : Motivation
 \begin{frame}{Motivation}
@@ -57,6 +65,8 @@
  
 \end{itemize}
 \end{frame}
+
+\section{Problem Statement}
 \begin{frame}{Problem Statement}
  \begin{itemize}
   \item Given that we know a lot about countries, can we train extractors that run over the web and pull similar facts about other entities?
@@ -102,6 +112,8 @@
 \end{frame}
 
 %PART 2 : Relation extraction as a machine learning problem
+
+\section{Relation Extractions as a Machine Learning Problem}
 \begin{frame}
 \begin{block}{Relation extraction as a Machine Learning Problem}
 \end{block}
@@ -174,6 +186,7 @@
  \end{itemize}
 \end{frame}
 
+\section{Distant Supervision}
 %PART 3 DS
 \begin{frame}{Distant Supervision}
 \begin{itemize}
@@ -320,6 +333,7 @@ Srinivasa Ramanujan & Erode \\
 \end{itemize}
 \end{frame}
 
+\section{Distant Supervision Techniques}
 %PART 4: MultiR
 \begin{frame}{Distant Supervision Techniques}
  \begin{itemize}
@@ -398,8 +412,8 @@ Srinivasa Ramanujan & Erode \\
 \end{frame}
 
 % %PART 5: TAC Submission
-
-\begin{frame}{Cold Start Knowledge Base Population at 2014}
+\section{TAC Submission}
+\begin{frame}{Cold Start Knowledge Base Population, 2014}
 \begin{itemize}
  
  \item Knowledge Base Population (KBP) track of TAC encourages the development of systems that can match entities mentioned in natural texts with those
@@ -415,7 +429,7 @@ appearing in a knowledge base and extract novel information about entities from 
 \end{itemize}
 
 \end{frame}
-\begin{frame}
+\begin{frame}{Cold Start Knowledge Base Population}
 
 \begin{itemize}
   \item  Modeled the problem using distant supervision
@@ -446,7 +460,7 @@ appearing in a knowledge base and extract novel information about entities from 
 \end{frame}
 
 
-
+\section{Numerical Relation Extraction}
 %%THIS IS PART 6 : numerical relation extraction using distant supervision
 
 \begin{frame}{Distant supervision for Numerical Relation Extraction}{Knowledge Base}
@@ -472,6 +486,8 @@ appearing in a knowledge base and extract novel information about entities from 
 \end{itemize}
 
 \end{frame}
+
+
 \begin{frame}{Selected Relations}
  \begin{center}
 \begin{tabular}{|l|l|}
@@ -546,7 +562,7 @@ Population (Total)&SP.POP.TOTL\\
 \end{frame}
 
 %PART 7 : Units
-
+\section{Units in Numerical Relation Extraction}
 \begin{frame}
  
  \frametitle{Numbers are incomplete without units} \pause
@@ -780,7 +796,7 @@ Electricity Production & "Electricity" \\
   \item The keywords are created manually, can this process be automated?
 \end{itemize}
 \end{frame}
-
+\section{Results}
 
 \end{document}
 
