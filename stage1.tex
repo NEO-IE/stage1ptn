@@ -3,7 +3,7 @@
 \usetheme{Madrid}
 \usepackage[utf8]{inputenc}
 \usepackage{default}
-\usepackage{default}
+\usepackage{graphicx}
 
 \usepackage{soul}
 \makeatletter
@@ -538,6 +538,45 @@ Population (Total)&SP.POP.TOTL\\
   \end{itemize}
  \end{itemize}
 \end{frame}
+\begin{frame}{First Attempt: Vanilla Matching}
+ \begin{center}
+ \includegraphics{./imgs/simple.pdf}
+ % simple.pdf: 363x272 pixel, 72dpi, 12.81x9.60 cm, bb=0 0 363 272
+\end{center}
+\end{frame}
+%TODO : Add distribution of matches per relation
+\begin{frame}{Vanilla Matching}
+ 
+ \begin{itemize}
+  \item A large number of matches
+  \item Most of them false positives
+ \end{itemize}
+
+\end{frame}
+\begin{frame}{Vanilla Matching: Results}
+\begin{center}
+ \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+ 
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Relation&Total Matches&Sampled Matches&True Matches&Precision\\
+\hline
+AG.LND.TOTL.K2&1884&15&1&0.06666666667\\
+BN.KLT.DINV.CD&0&0&0&0\\
+BX.GSR.MRCH.CD&0&0&0&0\\
+EG.ELC.PROD.KH&381&10&0&0\\
+EN.ATM.CO2E.KT&0&0&0&0\\
+EP.PMP.DESL.CD&8491&15&0&0\\
+FP.CPI.TOTL.ZG&8689&15&0&0\\
+IT.NET.USER.P2&182319&40&0&0\\
+NY.GDP.MKTP.CD&0&0&0&0\\
+SP.DYN.LE00.IN&267&10&0&0\\
+SP.POP.TOTL&0&&&\\
+\hline
+\end{tabular}}
+\end{center}
+\end{frame}
+
 \begin{frame}{False Positives}{Numbers are weak entities}
 \begin{itemize}
  \item Vanilla numerical relation matching is bound to attract humoungous amounts of false positives; \pause \\~\\
@@ -562,15 +601,6 @@ Population (Total)&SP.POP.TOTL\\
  \item Can we expect the situation to be even worse for certain types of numbers?
 \end{itemize}
 \end{frame}
-
-\begin{frame}{One Thousand Words}
- \begin{center}
- \includegraphics{./imgs/simple.pdf}
- % simple.pdf: 363x272 pixel, 72dpi, 12.81x9.60 cm, bb=0 0 363 272
-\end{center}
-
-\end{frame}
-
 %PART 7 : Units
 \section{Units in Numerical Relation Extraction}
 \begin{frame}
