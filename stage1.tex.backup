@@ -4,7 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{default}
 \usepackage{graphicx}
-
+\usepackage{amssymb}
+\usepackage{tabularx}
 \usepackage{soul}
 \makeatletter
 \newcommand\SoulColor{%
@@ -185,10 +186,9 @@
 
 \begin{frame}{Challenge}
  \begin{itemize}
-  \item  5 million sentences).  \pause \\~\\
   \item Large Corpus (16 million sentences), hand labeling is out of questions \pause \\~\\
-  \item For model to generalize well, we need lots of training data. \pause \\~\\
-  \item What to do then?
+  \item But we need lots of training data to train high quality extractors! \pause \\~\\
+  \item Is there a middle ground?
  \end{itemize}
 \end{frame}
 
@@ -221,7 +221,7 @@ Alan Turing & London \\
 \begin{itemize}
 \item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
 \item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
@@ -245,9 +245,9 @@ Alan Turing & London \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in his maternal grandmother’s home in \SoulColor\hl{Erode}.} \alert{LABEL : BornIn}
+\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in his maternal grandmother’s home in \SoulColor\hl{Erode}.} \alert{LABEL : BornIn} \checkmark
 \item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
@@ -271,13 +271,12 @@ Alan Turing & London \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
-\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in \SoulColor\hl{Erode}, Tamilnadu, India, on 22nd December, 1887.}
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.  \checkmark
+\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in \SoulColor\hl{Erode}, Tamilnadu, India, on 22nd December, 1887.}  \checkmark
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
- 
 \end{frame}
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
@@ -297,14 +296,14 @@ Srinivasa Ramanujan & Erode \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
-\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item \alert<+> {\SoulColor\hl{Turing} was born in Paddington, \SoulColor\hl{London}, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.  \checkmark
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.  \checkmark
+\item \alert<+> {\SoulColor\hl{Turing's} father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar}  \textbf{X}
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
- 
 \end{frame}
+
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -323,14 +322,42 @@ Srinivasa Ramanujan & Erode \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
-\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
-\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode. \checkmark
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.  \checkmark
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.  \textbf{X}
+\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.} \checkmark
 \end{itemize}
 \end{itemize}
  
 \end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+Srinivasa Ramanujan & Erode \\
+\SoulColor\hl{Alan Turing} & \SoulColor\hl{London} \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=black,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.   \checkmark
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.   \checkmark
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar. \textbf{X}
+\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.\checkmark {\color{red}FALSE POSITIVE}} 
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
 \begin{frame}{Distant Supervision} \pause
 \begin{itemize}
 \item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation \pause \\~\\
@@ -473,22 +500,24 @@ appearing in a knowledge base and extract novel information about entities from 
 \begin{frame}{Distant supervision for Numerical Relation Extraction}{Knowledge Base}
  \begin{itemize}
   \item Derived from \url{data.worldbank.org}, 4371979 numerical facts about 249 countries, 1281 attributes 
-
+\begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-/m/04g5k&3126000130&EG.ELC.PROD.KH\\
-/m/02k8k&1969.179&EN.ATM.CO2E.KT\\
-/m/06nnj&332315&SP.POP.TOTL\\
-/m/019rg5&55.020073&SP.DYN.LE00.IN\\
-/m/05sb1&19974.148&EN.ATM.CO2E.KT\\
-/m/05v8c&10000000000&EG.ELC.PROD.KH\\
-/m/03spz&7639000100&EG.ELC.PROD.KH\\
-/m/06vbd&44249.688&EN.ATM.CO2E.KT\\
-/m/0d060g&51.3&IT.NET.USER.P2\\
-/m/05qkp&62.298927&SP.DYN.LE00.IN\\
+Freebase Entity& Value & Relation\\
+\hline
+/m/04g5k&3126000130&Electricity Production\\
+/m/02k8k&1969.179&$CO_{2}$ Emission\\
+/m/06nnj&332315&Total Population\\
+/m/019rg5&55.020073&Life Expectancy\\
+/m/05sb1&19974.148&$CO_{2}$ Emission\\
+/m/05v8c&10000000000&Electricity Production\\
+/m/03spz&7639000100&Electricity Production\\
+/m/06vbd&44249.688&$CO_{2}$ Emission\\
+/m/0d060g&51.3&Internet Users(\%)\\
+/m/05qkp&62.298927&Life Expectancy\\
 \hline
 \end{tabular}
-
+\end{center}
 
 \end{itemize}
 
@@ -551,6 +580,7 @@ Population (Total)&SP.POP.TOTL\\
  \end{itemize}
 
 \end{frame}
+
 \begin{frame}{Vanilla Matching: Results}
 \begin{center}
  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
@@ -559,21 +589,66 @@ Population (Total)&SP.POP.TOTL\\
 \hline
 Relation&Total Matches&Sampled Matches&True Matches&Precision\\
 \hline
-AG.LND.TOTL.K2&1884&15&1&0.06666666667\\
-BN.KLT.DINV.CD&0&0&0&0\\
-BX.GSR.MRCH.CD&0&0&0&0\\
-EG.ELC.PROD.KH&381&10&0&0\\
-EN.ATM.CO2E.KT&0&0&0&0\\
-EP.PMP.DESL.CD&8491&15&0&0\\
-FP.CPI.TOTL.ZG&8689&15&0&0\\
-IT.NET.USER.P2&182319&40&0&0\\
-NY.GDP.MKTP.CD&0&0&0&0\\
-SP.DYN.LE00.IN&267&10&0&0\\
-SP.POP.TOTL&0&&&\\
+Land Area&1884&15&\textbf{1}&\textbf{0.067}\\
+Foreign Direct Investment&0&0&0&0\\
+Goods Export&0&0&0&0\\
+Electricity Production&381&10&0&0\\
+$CO_{2}$ Emission&0&0&0&0\\
+Diesel Prices&8491&15&0&0\\
+Inflation(\%)&8689&15&0&0\\
+Internet Users(\%)&182319&40&0&0\\
+GDP(\$)&0&0&0&0\\
+Life Expectancy&267&10&0&0\\
+Total Population&0&0&0&0\\
 \hline
 \end{tabular}}
 \end{center}
 \end{frame}
+
+\begin{frame}{Sample Matches for Vanilla Matching}
+
+\begin{center}
+ \begin{table}
+ \tiny
+ \centering
+ \begin{tabularx}{\textwidth}{|l|l|l|>{\raggedright}X|}
+ \toprule
+ \hline
+ \textbf{Country} & \textbf{Relation} & \textbf{Value} & \textbf{Sentence}\tabularnewline
+ \hline
+ \midrule
+  South Africa & Internet Users(\%) & 24 & Montjane, \textbf{24}, was crowned on Sunday evening at the Superbowl at Sun City, in \textbf{South Africa}'s North  West province.\tabularnewline
+  \hline
+ Croatia & Inflation & 500 & \textbf{Croatian} police say more than \textbf{500} guns turned in after the country's 1991 war were stolen from a police depot and sold on the black market.\tabularnewline
+  \hline
+  France & Life Expectancy & 75 & \textbf{France}: Hugo Lloris, Eric Abidal, Patrice Evra, William Gallas, Bacary Sagna, Abou Diaby, Yoann Gourcuff (Florent Malouda, \textbf{75}), Jeremy Toulalan, Nicolas Anelka (Thierry Henry, 72), Sidney Govou (Andre-Pierre Gignac, 85), Franck Ribery.\tabularnewline
+  \hline
+  France & Diesel prices & 1.72 & Lotte Friis of Denmark won the women's 800 freestyle in 8:23.27, followed at 0.73 seconds by Ophelie Cyriell Etienne of \textbf{France} and Federica Pellegrini of Italy, \textbf{1.72} seconds back.\tabularnewline
+  \hline
+  Bermuda & Land Area(sq. km) & 50 & Forecasters were also closely tracking the path of Tropical Storm Fiona about 360 miles (580 km) south of \textbf{Bermuda}, with wind speeds of up to \textbf{50} miles (85 km) per hour.\tabularnewline
+  \hline
+ \bottomrule
+ \end{tabularx}
+ \end{table}
+  \end{center}
+      \end{frame}
+ 
+ \begin{frame}{Key Observations on vanilla matching}
+  
+  \begin{itemize}
+   
+   \item Units for precision, not just recall \\~\\
+   
+   \item Dates and Sports articles lead to a lot of false positives \\~\\
+   
+   \item Small numbers generate larger false positives; finer numbers generate fewer false positives. \\~\\
+    \begin{itemize}
+      \item Intuitively, it makes sense that we'll see a lot of 2s, 3s, 71s in different contexts than 1,000,232,112. Due to similar reasons, getting an exact match for 23.14152 is more difficult than matching 23. \\~\\
+    \end{itemize}
+  \end{itemize}
+ \end{frame}
+
+
 
 \begin{frame}{False Positives}{Numbers are weak entities}
 \begin{itemize}
@@ -718,6 +793,70 @@ parses are as belows: \pause \\~\\
  
 \end{frame}
 
+\begin{frame}{Units Based Matching: Results}
+\begin{center}
+ \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+ 
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Relation&Total Matches&Sampled Matches&True Matches&Precision\\
+\hline
+\textbf{Land Area} &98	& 40 & 32 &0.8\\
+Foreign Direct Investment & 791 & 40& 1&0.025\\
+Goods Export&816&40&3&0.075\\
+Electricity Production&19&19&0&0\\
+$CO_{2}$ Emission&196&40&2&0.05\\
+Diesel Prices&2&2&2&1\\
+Inflation(\%)&27598&40&0&0\\
+Internet Users(\%)&24639&40&0&0\\
+GDP(\$)&1790&40&0&0\\
+Life Expectancy&3081&40&0&0\\
+\textbf{Total Population}&5225&40&11&0.275\\
+\hline
+\end{tabular}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Sample Matches for Unit Based Matching}
+
+\begin{center}
+ \begin{table}
+ \tiny
+ \centering
+ \begin{tabularx}{\textwidth}{|l|l|l|>{\raggedright}X|}
+ \toprule
+ \hline
+ \textbf{Country} & \textbf{Relation} & \textbf{Value} & \textbf{Sentence}\tabularnewline
+ \hline
+ \midrule
+ Lebanon & Land Area & $1.02 x 10^{11}$ sq m & \textbf{Lebanon} lies in the eastern Mediterranean and covers about \textbf{4,030 square miles} (10,450 square kilometers) -- smaller than the U.S. state of Connecticut.\tabularnewline
+  \hline
+  Russia & Goods Export & $ 10^{10}$ USD & The IMF agrees to offer a loan of \textbf{US\$10.2 billion} to \textbf{Russia} over the next three years to help Russians transform their economy.\tabularnewline
+  \hline
+  Australia & Internet Users(\%) & 0.6\% & South Korea's main index added \textbf{0.6 percent}, China's Shanghai's benchmark climbed 1.5 percent and \textbf{Australia}'s index advanced 1.1 percent.\tabularnewline
+  \hline
+  Israel & Internet Users(\%) & 20.0\% & \textbf{Israel}'s Arab community numbers 1.3 million, about \textbf{20 percent} of the population.\tabularnewline
+  \hline
+  Pakistan & Life Expectancy(years) & 60 & Why does a small elite still control vast swaths of land more than \textbf{60 years} after \textbf{Pakistan} became a nation?\tabularnewline
+  \hline
+ \bottomrule
+ \end{tabularx}
+ \end{table}
+  \end{center}
+ \end{frame}
+
+\begin{frame}{Key Observations on Unit Based Matching}
+ 
+ \begin{itemize}
+  \item  When it comes to numbers, distant supervision assumption is weak as can be evident from the examples above. 
+  Since second argument of a relation is number, this number can be related to the entity in multiple number of ways, which then gives lot of false positives.
+  \item For the attributes like inflation, percentage of internet user, whose values are in percentage are affected by stock data that is heavily present in news corpus.
+  \item For relations FDI, Goods Export, GDP we have almost similar values for three values.Hence a (entity, number) pair matches all of the three relations. We can improve our matching function for closely related attributes.
+ \end{itemize}
+
+ 
+\end{frame}
+
 
 %PART 8 : Keywords
 \begin{frame}{A case for Keywords}
@@ -769,7 +908,34 @@ Electricity Production & "Electricity" \\
   \item The keywords are created manually, can this process be automated?
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Keywords + Units Based Matching: Results}
+\begin{center}
+ \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+ 
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Relation&Total Matches&Sampled Matches&True Matches&Precision\\
+\hline
+\textbf{Land Area}&61&40&\textbf{30}&\textbf{0.75}\\
+Foreign Direct Investment&8&&0&0\\
+Goods Export&4&4&0&0\\
+Electricity Production&0&0&0&0\\
+$CO_{2}$ Emission&16&16&2&0.125\\
+Diesel Prices&2&2&2&1\\
+\textbf{Inflation(\%)}&3853&40&25&0.625\\
+Internet Users(\%)&308&40&7&0.175\\
+GDP(\$)&0&0&0&0\\
+\textbf{Life Expectancy}&99&40&15&0.375\\
+\textbf{Total Population}&607&40&24&0.6\\
+\hline
+\end{tabular}}
+\end{center}
+\end{frame}
+
 \section{Results}
+
+
 
 \end{document}
 
