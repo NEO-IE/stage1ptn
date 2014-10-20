@@ -3,7 +3,7 @@
 \usetheme{Madrid}
 \usepackage[utf8]{inputenc}
 \usepackage{default}
-\usepackage{default}
+\usepackage{graphicx}
 
 \usepackage{soul}
 \makeatletter
@@ -37,7 +37,7 @@
 \section{Motivation}
 
 %PART 1 : Motivation
-\begin{frame}{Motivation}
+\begin{frame}{Entities and Numerical Attributes}
 
     \begin{figure}
     \centering
@@ -45,7 +45,16 @@
   \end{figure}
  
 \end{frame}
-\begin{frame}{Motivation}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[scale=0.45]{./imgs/car.pdf}
+ % car.pdf: 363x272 pixel, 72dpi, 12.81x9.60 cm, bb=0 0 363 272
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Entities and Numerical Attributes}
  
  \begin{itemize}
   \item Repositories of facts containing this information can be found at many places, like data.worldbank.org, Wikipedia infoboxes etc. \pause \\~\\
@@ -159,18 +168,7 @@
  \end{itemize}
 
 \end{frame}
-\begin{frame}{Relation Extraction as a Machine Learning Problem}
-\begin{itemize}
-  \item There is lot of redundancy in ways in which a relation is expressed in sentence. \pause \\~\\
-  \item So for every relation learn the patterns that express it. \pause \\~\\
-    \begin{itemize}
-      \item grammatical patterns - POS tags, dependency parse. \pause \\~\\
-      \item keywords for the relations. \pause \\~\\
-    \end{itemize}
-    
-    \item This forms the relation extraction as a multi-class classification problem.
- \end{itemize}
-\end{frame}
+
 \begin{frame}{Possible Workflow} \pause
   \begin{itemize}
    \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.\pause  \\~\\
@@ -187,9 +185,9 @@
 
 \begin{frame}{Challenge}
  \begin{itemize}
-  \item The size of corpus is enormous (e.g, 5 million sentences).  \pause \\~\\
-  \item It is very hard to go through the entire corpus and label each sentence to one of the relations. \pause \\~\\
-  \item For model to generalize well, we need lot of training data. \pause \\~\\
+  \item  5 million sentences).  \pause \\~\\
+  \item Large Corpus (16 million sentences), hand labeling is out of questions \pause \\~\\
+  \item For model to generalize well, we need lots of training data. \pause \\~\\
   \item What to do then?
  \end{itemize}
 \end{frame}
@@ -544,7 +542,39 @@ Population (Total)&SP.POP.TOTL\\
  % simple.pdf: 363x272 pixel, 72dpi, 12.81x9.60 cm, bb=0 0 363 272
 \end{center}
 \end{frame}
-\begin{frame}{Falls flat on the face}
+%TODO : Add distribution of matches per relation
+\begin{frame}{Vanilla Matching}
+ 
+ \begin{itemize}
+  \item A large number of matches
+  \item Most of them false positives
+ \end{itemize}
+
+\end{frame}
+\begin{frame}{Vanilla Matching: Results}
+\begin{center}
+ \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+ 
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Relation&Total Matches&Sampled Matches&True Matches&Precision\\
+\hline
+AG.LND.TOTL.K2&1884&15&1&0.06666666667\\
+BN.KLT.DINV.CD&0&0&0&0\\
+BX.GSR.MRCH.CD&0&0&0&0\\
+EG.ELC.PROD.KH&381&10&0&0\\
+EN.ATM.CO2E.KT&0&0&0&0\\
+EP.PMP.DESL.CD&8491&15&0&0\\
+FP.CPI.TOTL.ZG&8689&15&0&0\\
+IT.NET.USER.P2&182319&40&0&0\\
+NY.GDP.MKTP.CD&0&0&0&0\\
+SP.DYN.LE00.IN&267&10&0&0\\
+SP.POP.TOTL&0&&&\\
+\hline
+\end{tabular}}
+\end{center}
+\end{frame}
+
 \begin{frame}{False Positives}{Numbers are weak entities}
 \begin{itemize}
  \item Vanilla numerical relation matching is bound to attract humoungous amounts of false positives; \pause \\~\\
@@ -687,23 +717,7 @@ parses are as belows: \pause \\~\\
  \end{itemize}
  
 \end{frame}
-\begin{frame}
- \frametitle{Unit Extraction is not easy!} \pause
- 
- \begin{itemize}
-    \item Different ways to represent a single unit. \pause \\~\\
-    
-    \begin{itemize}
-     \item Tunisia occupies an area of 163,610 \textbf{square kilometres}, of which 8,250 are water. \pause \\~\\
-     \item With an area of about 9.6 \textbf{million $km^{2}$}, the People's Republic of China is the 3rd largest country in total area behind Russia and Canada, and very similar to the United States. \\~\\    \end{itemize}
-\pause
-    
-    \item Multiple units to represent a single numerical fact. \pause \\~\\
-    \begin{itemize}
-      \item Vatican City, a walled enclave within the city of Rome, with an area of approximately \textbf{44 hectares} \textbf{(110 acres)}, and a population of 842, is the smallest internationally recognized independent state in the world by both area and population. \\~\\
-    \end{itemize}
- \end{itemize}
-\end{frame}
+
 
 %PART 8 : Keywords
 \begin{frame}{A case for Keywords}

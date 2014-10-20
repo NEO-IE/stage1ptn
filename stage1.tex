@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{default}
 \usepackage{graphicx}
-
+\usepackage{amssymb}
 \usepackage{soul}
 \makeatletter
 \newcommand\SoulColor{%
@@ -37,7 +37,7 @@
 \section{Motivation}
 
 %PART 1 : Motivation
-\begin{frame}{Motivation}
+\begin{frame}{Entities and Numerical Attributes}
 
     \begin{figure}
     \centering
@@ -45,7 +45,16 @@
   \end{figure}
  
 \end{frame}
-\begin{frame}{Motivation}
+
+\begin{frame}
+ \begin{center}
+ \includegraphics[scale=0.45]{./imgs/car.pdf}
+ % car.pdf: 363x272 pixel, 72dpi, 12.81x9.60 cm, bb=0 0 363 272
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Entities and Numerical Attributes}
  
  \begin{itemize}
   \item Repositories of facts containing this information can be found at many places, like data.worldbank.org, Wikipedia infoboxes etc. \pause \\~\\
@@ -159,18 +168,7 @@
  \end{itemize}
 
 \end{frame}
-\begin{frame}{Relation Extraction as a Machine Learning Problem}
-\begin{itemize}
-  \item There is lot of redundancy in ways in which a relation is expressed in sentence. \pause \\~\\
-  \item So for every relation learn the patterns that express it. \pause \\~\\
-    \begin{itemize}
-      \item grammatical patterns - POS tags, dependency parse. \pause \\~\\
-      \item keywords for the relations. \pause \\~\\
-    \end{itemize}
-    
-    \item This forms the relation extraction as a multi-class classification problem.
- \end{itemize}
-\end{frame}
+
 \begin{frame}{Possible Workflow} \pause
   \begin{itemize}
    \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.\pause  \\~\\
@@ -187,10 +185,9 @@
 
 \begin{frame}{Challenge}
  \begin{itemize}
-  \item The size of corpus is enormous (e.g, 5 million sentences).  \pause \\~\\
-  \item It is very hard to go through the entire corpus and label each sentence to one of the relations. \pause \\~\\
-  \item For model to generalize well, we need lot of training data. \pause \\~\\
-  \item What to do then?
+  \item Large Corpus (16 million sentences), hand labeling is out of questions \pause \\~\\
+  \item But we need lots of training data to train high quality extractors! \pause \\~\\
+  \item Is there a middle ground?
  \end{itemize}
 \end{frame}
 
@@ -223,7 +220,7 @@ Alan Turing & London \\
 \begin{itemize}
 \item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
 \item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
@@ -247,9 +244,9 @@ Alan Turing & London \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in his maternal grandmother’s home in \SoulColor\hl{Erode}.} \alert{LABEL : BornIn}
+\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in his maternal grandmother’s home in \SoulColor\hl{Erode}.} \alert{LABEL : BornIn} \checkmark
 \item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
@@ -273,9 +270,9 @@ Alan Turing & London \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
-\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in \SoulColor\hl{Erode}, Tamilnadu, India, on 22nd December, 1887.}
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.  \checkmark
+\item \alert<+> {\SoulColor\hl{Srinivasa Ramanujan} was born in \SoulColor\hl{Erode}, Tamilnadu, India, on 22nd December, 1887.}  \checkmark
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
@@ -299,14 +296,14 @@ Srinivasa Ramanujan & Erode \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
-\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item \alert<+> {\SoulColor\hl{Turing} was born in Paddington, \SoulColor\hl{London}, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.  \checkmark
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.  \checkmark
+\item \alert<+> {\SoulColor\hl{Turing's} father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar}  \textbf{X}
 \item Alan Turing biopic The Imitation Game named as London film festival opener.
 \end{itemize}
 \end{itemize}
- 
 \end{frame}
+
 \begin{frame}{Distant Supervision}{Example}
 \begin{itemize}
  
@@ -325,14 +322,42 @@ Srinivasa Ramanujan & Erode \\
 \setbeamercolor{alerted text}{fg=black,bg=}
 \usebeamercolor{normal text}
 \begin{itemize}
-\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.
-\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.
-\item Turing was born in Paddington, London, while his father was on leave from his position with the Indian Civil Service (ICS) at Chhatrapur, Bihar
-\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode. \checkmark
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.  \checkmark
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar.  \textbf{X}
+\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.} \checkmark
 \end{itemize}
 \end{itemize}
  
 \end{frame}
+
+\begin{frame}{Distant Supervision}{Example}
+\begin{itemize}
+ 
+\item Born - In database
+ \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Donald Knuth & Wisconsin \\
+Srinivasa Ramanujan & Erode \\
+\SoulColor\hl{Alan Turing} & \SoulColor\hl{London} \\
+\hline
+\end{tabular}
+\end{center}
+\item Given Sentences
+\setbeamercolor{normal text}{fg=gray,bg=}
+\setbeamercolor{alerted text}{fg=black,bg=}
+\usebeamercolor{normal text}
+\begin{itemize}
+\item Srinivasa Ramanujan was born in his maternal grandmother’s home in Erode.   \checkmark
+\item Srinivasa Ramanujan was born in Erode, Tamilnadu, India, on 22nd December, 1887.   \checkmark
+\item Turing's father was with the Indian Civil Service (ICS) at Chhatrapur, Bihar. \textbf{X}
+\item \alert<+> {\SoulColor\hl{Alan Turing} biopic The Imitation Game named as \SoulColor\hl{London} film festival opener.\checkmark {\color{red}FALSE POSITIVE}} 
+\end{itemize}
+\end{itemize}
+ 
+\end{frame}
+
 \begin{frame}{Distant Supervision} \pause
 \begin{itemize}
 \item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation \pause \\~\\
