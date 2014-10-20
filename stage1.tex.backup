@@ -918,7 +918,7 @@ Electricity Production & "Electricity" \\
 Relation&Total Matches&Sampled Matches&True Matches&Precision\\
 \hline
 \textbf{Land Area}&61&40&\textbf{30}&\textbf{0.75}\\
-Foreign Direct Investment&8&&0&0\\
+Foreign Direct Investment&8&0&0&0\\
 Goods Export&4&4&0&0\\
 Electricity Production&0&0&0&0\\
 $CO_{2}$ Emission&16&16&2&0.125\\
@@ -933,8 +933,27 @@ GDP(\$)&0&0&0&0\\
 \end{center}
 \end{frame}
 
-\section{Results}
-
+\begin{frame}{Relative Recall}
+\begin{itemize}
+ \item Different Heurisitic improved some aspect of matching for distant supervision.  \\~\\
+ \item But we need to be careful, that with agressive pruning of incorrect sentences, we are not leaving some good sentences. \\~\\
+ \item So for all the Heuristics, we calculate the percentage of true matches that were extracted by each Heuristics. We call this \textbf{Relative Recall}
+\end{itemize}
+\begin{center}
+\begin{tabular}{|l|l|}
+ \hline
+ Total Sentences for evaluation & 676 \\
+ \hline
+ Total True Positives & 138 \\
+ \hline
+ Vanilla Matching & 2 \\
+ Units + Distance Based Matching & 79 \\
+ Keywords + Units + Distance Based Matching & 112 \\
+ \hline
+ 
+\end{tabular}
+\end{center}
+\end{frame}
 
 
 \end{document}

@@ -607,16 +607,13 @@ Total Population&0&0&0&0\\
 
 \begin{frame}{Sample Matches for Vanilla Matching}
 
-\begin{center}
  \begin{table}
  \tiny
  \centering
  \begin{tabularx}{\textwidth}{|l|l|l|>{\raggedright}X|}
- \toprule
  \hline
  \textbf{Country} & \textbf{Relation} & \textbf{Value} & \textbf{Sentence}\tabularnewline
  \hline
- \midrule
   South Africa & Internet Users(\%) & 24 & Montjane, \textbf{24}, was crowned on Sunday evening at the Superbowl at Sun City, in \textbf{South Africa}'s North  West province.\tabularnewline
   \hline
  Croatia & Inflation & 500 & \textbf{Croatian} police say more than \textbf{500} guns turned in after the country's 1991 war were stolen from a police depot and sold on the black market.\tabularnewline
@@ -627,11 +624,9 @@ Total Population&0&0&0&0\\
   \hline
   Bermuda & Land Area(sq. km) & 50 & Forecasters were also closely tracking the path of Tropical Storm Fiona about 360 miles (580 km) south of \textbf{Bermuda}, with wind speeds of up to \textbf{50} miles (85 km) per hour.\tabularnewline
   \hline
- \bottomrule
  \end{tabularx}
  \end{table}
-  \end{center}
-      \end{frame}
+\end{frame}
  
  \begin{frame}{Key Observations on vanilla matching}
   
@@ -819,16 +814,14 @@ Life Expectancy&3081&40&0&0\\
 
 \begin{frame}{Sample Matches for Unit Based Matching}
 
-\begin{center}
+
  \begin{table}
- \tiny
  \centering
+ \tiny
  \begin{tabularx}{\textwidth}{|l|l|l|>{\raggedright}X|}
- \toprule
  \hline
  \textbf{Country} & \textbf{Relation} & \textbf{Value} & \textbf{Sentence}\tabularnewline
  \hline
- \midrule
  Lebanon & Land Area & $1.02 x 10^{11}$ sq m & \textbf{Lebanon} lies in the eastern Mediterranean and covers about \textbf{4,030 square miles} (10,450 square kilometers) -- smaller than the U.S. state of Connecticut.\tabularnewline
   \hline
   Russia & Goods Export & $ 10^{10}$ USD & The IMF agrees to offer a loan of \textbf{US\$10.2 billion} to \textbf{Russia} over the next three years to help Russians transform their economy.\tabularnewline
@@ -839,10 +832,8 @@ Life Expectancy&3081&40&0&0\\
   \hline
   Pakistan & Life Expectancy(years) & 60 & Why does a small elite still control vast swaths of land more than \textbf{60 years} after \textbf{Pakistan} became a nation?\tabularnewline
   \hline
- \bottomrule
  \end{tabularx}
  \end{table}
-  \end{center}
  \end{frame}
 
 \begin{frame}{Key Observations on Unit Based Matching}
@@ -883,7 +874,9 @@ Life Expectancy&3081&40&0&0\\
  \begin{itemize}
   \item Take all the labeled sentences, prune out sentences that don't have atleast one of the relevant keywords
  \end{itemize}
- 
+ \begin{table}
+  \tiny
+
  \begin{tabular}{|l|l|}
   \hline
   Internet User \% & "Internet" \\
@@ -899,6 +892,7 @@ Life Expectancy & "life", "life expectancy" \\
 Electricity Production & "Electricity" \\
  \hline
  \end{tabular}
+ \end{table}
 \end{frame}
 \begin{frame}{A case for Keywords}
 \begin{itemize} 
@@ -932,6 +926,30 @@ GDP(\$)&0&0&0&0\\
 \end{tabular}}
 \end{center}
 \end{frame}
+
+% \begin{frame}{Sample Matches for Keywords Based Matching}
+% 
+% 
+%  \begin{table}
+%  \centering
+%  \tiny
+%  \begin{tabularx}{\textwidth}{|l|l|l|>{\raggedright}X|}
+%  \hline
+%  \textbf{Country} & \textbf{Relation} & \textbf{Value} & \textbf{Sentence}\tabularnewline
+%  \hline
+%  India & Land Area & $3.00 x 10^{12}$ sq m & With an \texit{area} of \textbf{2.98 million square km}, \textbf{India} is the largest country in South Asia..\tabularnewline
+%   \hline
+%   Bulgaria & $CO_{2}$ Emission & $ 6^{7}$ ton & Depending on the Commission's ruling on the country's challenging of the quotas, \textbf{Bulgaria} would end up with at least \textbf{60 million tonnes} of \textit{CO2} or 60 million EUAs to trade, which are worth several hundred million euros.\tabularnewline
+%   \hline
+%   Malawi & Life Expectancy(years) & 40 years & \textbf{Malawi}, like other southern African countries, has seen its \textit{life expectancy} drop from about 60 years in the early 1990s to below \textbf{40 years} presently due to the HIV-AIDS pandemic.\tabularnewline
+%   \hline
+%   Iceland & Total Population & 330000 & home to \textbf{320,000} \texit{people} , \textbf{Iceland} officially apply to join the EU at the end of July. \tabularnewline
+%   \hline
+%   Japan & Inflation(\%) & 8.2\% & \textbf{Japan}'s economy decline by \textbf{8.4 percent} , after adjustment for \textit{inflation} , from the first quarter of 2008 to the first quarter of 2009.\tabularnewline
+%   \hline
+%  \end{tabularx}
+%  \end{table}
+%  \end{frame}
 
 \begin{frame}{Relative Recall}
 \begin{itemize}
