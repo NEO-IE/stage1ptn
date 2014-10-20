@@ -4,10 +4,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{default}
 \usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{algorithm,algorithmic}
 \usepackage{amssymb}
 \usepackage{tabularx}
 \usepackage{caption}
 \usepackage{soul}
+\usepackage{textcomp}
 \makeatletter
 \newcommand\SoulColor{%
   \let\set@color\beamerorig@set@color
@@ -149,13 +152,10 @@ to a number \\~\\
 %PART 2 : Relation extraction as a machine learning problem
 
 \section{Relation Extraction as a Machine Learning Problem}
-\begin{frame}
-\begin{block}{Relation extraction as a Machine Learning Problem}
-\end{block}
-\end{frame}
+
 \begin{frame}{Relation Extraction as a Machine Learning Problem}
  \begin{itemize}
-  \item Structure and content of sentences expressing the same relations can be expected to be similar.  \\~\\
+  \item \textbf{Structure} and \textbf{content} of sentences expressing the same relations can be \emph{expected} to be similar.  \\~\\
  \begin{itemize}
       \item The population of Australia is estimated to be 23,622,400 as of 7 October 2014. \\~\\
       \item According to an official estimate for 1 June 2014, the population of Russia is 143,800,000.   
@@ -164,7 +164,7 @@ to a number \\~\\
 \end{frame}
 \begin{frame}{Relation Extraction as a Machine Learning Problem}
 \begin{itemize}
-\item  Structure and content of sentences expressing the same relations can be expected to be similar.  \\~\\
+\item \textbf{Structure} and \textbf{content} of sentences expressing the same relations can be \emph{expected} to be similar.  \\~\\
  \begin{itemize}   
     \item At 17,075,400 square kilometres, Russia is the largest country in the world. \\~\\
     \item With an area of 504,030 $km^{2}$, Spain is the second largest country in Western Europe. 
@@ -188,24 +188,31 @@ to a number \\~\\
 
 \end{frame}
 
-\begin{frame}{Possible Workflow} \pause
-  \begin{itemize}
-   \item Collect enough examples for each relation so that there are sufficient patterns and enough redundancy to exploit.\pause  \\~\\
-   \item Extract features (important keywords, grammatical structure, parse tress, etc.) for these sentences. \pause \\~\\
-   \item Learn a multi-class classifier on this training data (Explained later). \pause \\~\\
-   \item Once the model is learnt, for every sentence \pause \\~\\
-    \begin{itemize}
-	\item Extract features for the sentence \pause \\~\\
-	\item Predict the relation using the model for these features \pause \\~\\
-	\item store the fact into database. 
-     \end{itemize}
-  \end{itemize}
+
+
+\begin{frame}{Possible Workflow}
+\begin{algorithm}[H]
+\setstretch{1.35}
+\begin{algorithmic}[1]
+\STATE \textbf{Collect enough examples} for each relation so that there are sufficient patterns and enough redundancy to exploit. \\
+\STATE \textbf{Extract features} (important keywords, grammatical structure, parse tress, etc.) for these sentences. \\
+\STATE \textbf{Train} a multi-class classifier on this training data. \\
+\FOR{$sentence\ s \in Corpus $}
+\STATE \textbf{Extract} features for $s$.
+\STATE \textbf{Predict} the relation using the model for these features.
+\STATE \textbf{Store} the fact into a database.
+\ENDFOR
+
+\end{algorithmic}
+\caption*{Relation Extraction}
+\label{alg:seq}
+\end{algorithm}
 \end{frame}
 
 \begin{frame}{Challenge}
  \begin{itemize}
-  \item Large Corpus (16 million sentences), hand labeling is out of questions \pause \\~\\
-  \item But we need lots of training data to train high quality extractors! \pause \\~\\
+  \item Large Corpus ($\sim$16 million sentences), hand labeling is out of question \pause \\~\\
+  \item Need lots of training data to train high quality extractors \pause \\~\\
   \item Is there a middle ground?
  \end{itemize}
 \end{frame}
@@ -214,10 +221,10 @@ to a number \\~\\
 %PART 3 DS
 \begin{frame}{Distant Supervision} \pause 
 \begin{itemize}
- \item Manual labeling of the entire corpus is not possible \pause \\~\\
- \item Weak Supervision as a middle ground \pause \\~\\
-  \item Use Heuristics to align a table of facts with the corpus  \pause \\~\\
-  \item Fuzzy training 
+ 
+ \item  \emph{Weak} Supervision\pause \\~\\
+  \item Use Heuristics to \textbf{align} a \textbf{table} of facts with the \textbf{corpus}  \pause \\~\\
+  \item \emph{Fuzzy} training data 
   
 \end{itemize}
 \end{frame}
@@ -378,10 +385,10 @@ Srinivasa Ramanujan & Erode \\
 
 \begin{frame}{Distant Supervision} \pause
 \begin{itemize}
-\item[\textcolor{red}{$\bullet$}] Distant supervision assumption, any sentence containing the entity pair will express the corresponding relation \pause \\~\\
+\item[\textcolor{red}{$\bullet$}] \emph{Distant supervision assumption:} If an entity pair $E$ appears with a relation $R$ in the knowledge base, then any sentence containing $E$ \textbf{will} express $R$ \pause \\~\\
 \item[\textcolor{green}{$\bullet$}] Can quickly label huge corpora \pause \\~\\
 \item[\textcolor{red}{$\bullet$}] Same entity pair can match different relations (Founded(Steve Jobs, Apple) or CEO(Steve Jobs, Apple)) \pause \\~\\
-\item[\textcolor{red}{$\bullet$}] False positives, may lead to model learning wrong patterns for relations 
+\item[\textcolor{red}{$\bullet$}] False positives, may lead to the model learning wrong patterns for relations (E.g. ``Film Festival'' an Indicator of BornIn) 
 \end{itemize}
 \end{frame}
 
